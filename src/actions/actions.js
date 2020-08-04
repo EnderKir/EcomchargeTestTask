@@ -1,4 +1,4 @@
-import { HIDE_ALERT, HIDE_LOADER, SHOW_ALERT, SHOW_LOADER, REQUEST_DATA } from './types'
+import { HIDE_ALERT, HIDE_LOADER, SHOW_ALERT, SHOW_LOADER, REQUEST_DATA, GET_CURRENT } from './types'
 
 export function showLoader() {
     return {
@@ -34,5 +34,12 @@ export function hideAlert() {
 export function fetchData() {
     return {
         type: REQUEST_DATA
+    }
+}
+
+export function getCurrent(id) {
+    return {
+        type: GET_CURRENT,
+        id
     }
 }

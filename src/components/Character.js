@@ -1,18 +1,34 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {Link} from "react-router-dom";
 import { withRouter } from "react-router";
 
 import moment from 'moment';
 
-import {getCurrent, showLoader} from "../actions/actions";
+import {getCurrent, showLoader, removeCurrent} from "../actions/actions";
 
 import Loader from "./Loader";
 
 import styled from "styled-components";
 
+const StyledLink = styled(Link)`
+  color: palevioletred;
+  display: block;
+  margin: 0.5em 0;
+  font-family: Helvetica, Arial, sans-serif;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  &.active {
+    color: red;
+  }
+`;
+
 const CharacterPage = styled.div`
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `
 
 const CharacterBlock = styled.div`
@@ -49,7 +65,7 @@ const Character = ({ match }) => {
         dispatch(showLoader());
         setTimeout(() => {
             dispatch(getCurrent(match.params.id));
-        }, 500);
+        }, 700);
     }, [dispatch, match.params.id]);
 
     const currentCharacter = useSelector(state => state.data.currentCharacter);
@@ -60,6 +76,10 @@ const Character = ({ match }) => {
     if (Object.keys(currentCharacter).length !== 0) {
         return (
             <CharacterPage>
+                <div>
+                    <StyledLink to="/" onClick={() => dispatch(removeCurrent())}>Go back</StyledLink>
+                </div>
+
                 <CharacterBlock>
                     <CharacterName>{currentCharacter.name}</CharacterName>
                     <PictureContainer>

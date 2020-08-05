@@ -1,4 +1,4 @@
-import { HIDE_ALERT, HIDE_LOADER, SHOW_ALERT, SHOW_LOADER, REQUEST_DATA, GET_CURRENT } from './types'
+import { HIDE_ALERT, HIDE_LOADER, SHOW_ALERT, SHOW_LOADER, REQUEST_DATA, GET_CURRENT, REMOVE_CURRENT } from './types'
 
 export function showLoader() {
     return {
@@ -18,10 +18,6 @@ export function showAlert(text) {
             type: SHOW_ALERT,
             payload: text
         })
-
-        setTimeout(() => {
-            dispatch(hideAlert())
-        }, 500)
     }
 }
 
@@ -31,9 +27,10 @@ export function hideAlert() {
     }
 }
 
-export function fetchData() {
+export function fetchData(pageCount) {
     return {
-        type: REQUEST_DATA
+        type: REQUEST_DATA,
+        pageCount
     }
 }
 
@@ -41,5 +38,11 @@ export function getCurrent(id) {
     return {
         type: GET_CURRENT,
         id
+    }
+}
+
+export function removeCurrent() {
+    return {
+        type: REMOVE_CURRENT
     }
 }

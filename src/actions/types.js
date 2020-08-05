@@ -5,4 +5,6 @@ export const HIDE_LOADER = 'APP/HIDE_LOADER';
 export const SHOW_ALERT = 'APP/SHOW_ALERT';
 export const HIDE_ALERT = 'APP/HIDE_ALERT';
 export const SET_CURRENT = 'DATA/SET_CURRENT';
-export const GET_CURRENT = "DATA/GET_CURRENT"
+export const GET_CURRENT = "DATA/GET_CURRENT";
+export const SET_MAX_PAGE_COUNT = "DATA/SET_MAX_PAGE_COUNT";
+export const REMOVE_CURRENT = "DATA/REMOVE_CURRENT";
